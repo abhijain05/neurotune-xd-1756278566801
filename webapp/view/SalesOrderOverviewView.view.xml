@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:layout="sap.ui.layout"
+  xmlns:form="sap.ui.layout.form"
+  xmlns:core="sap.ui.core"
+  xmlns:richtexteditor="sap.ui.richtexteditor"
+  xmlns:viz="sap.viz.ui5"
+  controllerName="preview.app.controller.SalesOrderOverviewView"
+  displayBlock="true">
+  <Page title="SalesOrderOverviewView" enableScrolling="true">
+    <content>
+      <Title id="title_hymxr00k" text="Overview: EPM Sales Order 500000032"/>
+      <Text id="rootLayout"/>
+    </content>
+  </Page>
+</mvc:View>

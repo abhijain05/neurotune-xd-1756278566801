@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebDynpro xmlns="http://www.sap.com/wd/webdynpro">
+  <View name="SalesOrderOverview">
+    <Title text="Overview: EPM Sales Order 500000032"/>
+    <VerticalFlowLayout id="rootLayout">
+      <!-- Top Toolbar Section -->
+      <HorizontalFlowLayout id="headerToolbar">
+        <MatrixLayout id="headerToolbarMatrix" rowCount="1" colCount="3" width="100%">
+          <MatrixHeadData id="headerToolbarMatrixHeadData1" span="1" />
+          <MatrixHeadData id="headerToolbarMatrixHeadData2" span="1" />
+          <MatrixHeadData id="headerToolbarMatrixHeadData3" span="1" hAlign="right" />
+          <MatrixRow id="headerToolbarMatrixRow">
+            <MatrixCell id="headerToolbarMatrixCell1">
+              <Button id="deleteButton" text="Delete" tooltip="Delete Sales Order" design="Standard"/>
+            </MatrixCell>
+            <MatrixCell id="headerToolbarMatrixCell2">
+              <!-- SAP Logo is part of the shell, not a specific UI element in view XML -->
+            </MatrixCell>
+            <MatrixCell id="headerToolbarMatrixCell3">
+              <HorizontalFlowLayout id="headerRightActions">
+                <Button id="settingsButton" tooltip="Settings" iconSource="sap-icon://action-settings" design="Transparent"/>
+                <Button id="personalizeButton" tooltip="Personalize" iconSource="sap-icon://key-user-settings" design="Transparent"/>
+                <Button id="attachmentsButton" tooltip="Attachments" iconSource="sap-icon://attachment" design="Transparent"/>
+                <Button id="helpButton" tooltip="Help" iconSource="sap-icon://sys-help" design="Transparent"/>
+              </HorizontalFlowLayout>
+            </MatrixCell>
+          </MatrixRow>
+        </MatrixLayout>
+      </HorizontalFlowLayout>
+
+      <!-- Sales Order Header Section -->
+      <Group id="salesOrderHeaderGroup" title="Sales Order Header" collapsible="true" expanded="true">
+        <HorizontalFlowLayout id="headerActions" hAlign="right" paddingRight="0.5rem">
+          <Link id="headerEditLink" text="Edit" tooltip="Edit Sales Order Header" />
+        </HorizontalFlowLayout>
+        <FormContainer id="salesOrderHeaderForm">
+          <MatrixLayout id="headerFormLayout" rowCount="5" colCount="4">
+            <!-- Row 1 -->
+            <MatrixRow id="headerFormRow1">
+              <MatrixCell id="headerFormCell1_1">
+                <FormElement id="soIdFormElement">
+                  <Label id="soIdLabel" text="Sales Order ID:"/>
+                  <InputField id="soIdField" value="{/SalesOrderHeader/SalesOrderID}" readOnly="true"/>
+                </FormElement>
+              </MatrixCell>
+              <MatrixCell id="headerFormCell1_2" />
+              <MatrixCell id="headerFormCell1_3">
+                <FormElement id="totalGrossAmountFormElement">
+                  <Label id="totalGrossAmountLabel" text="Total Gross Amount:"/>
+                  <HorizontalFlowLayout id="grossAmountInputGroup">
+                    <InputField id="totalGrossAmountValueField" value="{/SalesOrderHeader/TotalGrossAmountValue}" readOnly="true" width="8rem" textDirection="RTL"/>
+                    <TextView id="totalGrossAmountCurrencyText" text="{/SalesOrderHeader/TotalGrossAmountCurrency}" design="Label" paddingLeft="0.25rem" paddingRight="0.25rem"/>
+                    <Button id="currencyHelpButton" tooltip="Currency Help" iconSource="sap-icon://value-help" design="Transparent"/>
+                  </HorizontalFlowLayout>
+                </FormElement>
+              </MatrixCell>
+              <MatrixCell id="headerFormCell1_4" />
+            </MatrixRow>
+            <!-- Row 2 -->
+            <MatrixRow id="headerFormRow2">
+              <MatrixCell id="headerFormCell2_1">
+                <FormElement id="soLifecycleStatusFormElement">
+                  <Label id="soLifecycleStatusLabel" text="SO Lifecycle Status:"/>
+                  <InputField id="soLifecycleStatusField" value="{/SalesOrderHeader/LifecycleStatus}" readOnly="true"/>
+                </FormElement>
+              </MatrixCell>
+              <MatrixCell id="headerFormCell2_2" />
+              <MatrixCell id="headerFormCell2_3">
+                <FormElement id="totalNetAmountFormElement">
+                  <Label id="totalNetAmountLabel" text="Total Net Amount:"/>
+                  <HorizontalFlowLayout id="netAmountInputGroup">
+                    <InputField id="totalNetAmountValueField" value="{/SalesOrderHeader/TotalNetAmountValue}" readOnly="true" width="8rem" textDirection="RTL"/>
+                    <TextView id="totalNetAmountCurrencyText" text="{/SalesOrderHeader/TotalNetAmountCurrency}" design="Label" paddingLeft="0.25rem"/>
+                  </HorizontalFlowLayout>
+                </FormElement>
+              </MatrixCell>
+              <MatrixCell id="headerFormCell2_4" />
+            </MatrixRow>
+            <!-- Row 3 -->
+            <MatrixRow id="headerFormRow3">
+              <MatrixCell id="headerFormCell3_1">
+                <FormElement id="soConfirmationStatusFormElement">
+                  <Label id="soConfirmationStatusLabel" text="SO Confirmation Status:"/>
+                  <InputField id="soConfirmationStatusField" value="{/SalesOrderHeader/ConfirmationStatus}" readOnly="true"/>
+                </FormElement>
+              </MatrixCell>
+              <MatrixCell id="headerFormCell3_2" />
+              <MatrixCell id="headerFormCell3_3">
+                <FormElement id="totalTaxAmountFormElement">
+                  <Label id="totalTaxAmountLabel" text="Total Tax Amount:"/>
+                  <HorizontalFlowLayout id="taxAmountInputGroup">
+                    <InputField id="totalTaxAmountValueField" value="{/SalesOrderHeader/TotalTaxAmountValue}" readOnly="true" width="8rem" textDirection="RTL"/>
+                    <TextView id="totalTaxAmountCurrencyText" text="{/SalesOrderHeader/TotalTaxAmountCurrency}" design="Label" paddingLeft="0.25rem"/>
+                  </HorizontalFlowLayout>
+                </FormElement>
+              </MatrixCell>
+              <MatrixCell id="headerFormCell3_4" />
+            </MatrixRow>
+            <!-- Row 4 -->
+            <MatrixRow id="headerFormRow4">
+              <MatrixCell id="headerFormCell4_1">
+                <FormElement id="soOrderingStatusFormElement">
+                  <Label id="soOrderingStatusLabel" text="SO Ordering Status:"/>
+                  <InputField id="soOrderingStatusField" value="{/SalesOrderHeader/OrderingStatus}" readOnly="true"/>
+                </FormElement>
+              </MatrixCell>
+              <MatrixCell id="headerFormCell4_2" />
+              <MatrixCell id="headerFormCell4_3">
+                <FormElement id="opportunityIdFormElement">
+                  <Label id="opportunityIdLabel" text="Opportunity ID:"/>
+                  <InputField id="opportunityIdField" value="{/SalesOrderHeader/OpportunityID}"/>
+                </FormElement>
+              </MatrixCell>
+              <MatrixCell id="headerFormCell4_4" />
+            </MatrixRow>
+            <!-- Row 5 -->
+            <MatrixRow id="headerFormRow5">
+              <MatrixCell id="headerFormCell5_1">
+                <FormElement id="bpIdFormElement">
+                  <Label id="bpIdLabel" text="Business Partner ID:"/>
+                  <InputField id="bpIdField" value="{/SalesOrderHeader/BusinessPartnerID}" readOnly="true"/>
+                </FormElement>
+              </MatrixCell>
+              <MatrixCell id="headerFormCell5_2" />
+              <MatrixCell id="headerFormCell5_3">
+                <FormElement id="companyNameFormElement">
+                  <Label id="companyNameLabel" text="Company Name:"/>
+                  <HorizontalFlowLayout id="companyNameGroup">
+                    <TextView id="companyNameTecum" text="{/SalesOrderHeader/CompanyNamePart1}" design="Standard"/>
+                    <TextView id="companyNameAG" text="{/SalesOrderHeader/CompanyNamePart2}" design="Standard" paddingLeft="0.5rem"/>
+                  </HorizontalFlowLayout>
+                </FormElement>
+              </MatrixCell>
+              <MatrixCell id="headerFormCell5_4" />
+            </MatrixRow>
+          </MatrixLayout>
+        </FormContainer>
+        <HorizontalFlowLayout id="headerStatusLinks" hAlign="right">
+          <Link id="cancelLink" text="Cancel" tooltip="Cancel Sales Order" />
+          <Link id="confirmLink" text="Confirm" tooltip="Confirm Sales Order" paddingLeft="1rem" />
+          <TextView id="goodsIssueCreatedText" text="Goods Issue Created" design="Standard" enabled="false" paddingLeft="1rem" />
+          <TextView id="invoiceCreatedText" text="Invoice Created" design="Standard" enabled="false" paddingLeft="1rem" />
+        </HorizontalFlowLayout>
+      </Group>
+
+      <!-- Sales Order Items Section -->
+      <Group id="salesOrderItemsGroup" title="Sales Order Items" collapsible="true" expanded="true">
+        <HorizontalFlowLayout id="itemsHeaderActions" paddingRight="0.5rem">
+          <Link id="createItemLink" text="Create" iconSource="sap-icon://add" tooltip="Create New Item"/>
+          <Link id="editItemsLink" text="Edit" tooltip="Edit Sales Order Items" paddingLeft="1rem"/>
+          <MatrixLayout id="itemsToolbarMatrix" rowCount="1" colCount="2" width="100%">
+            <MatrixHeadData id="itemsToolbarMatrixHeadData1" span="1" />
+            <MatrixHeadData id="itemsToolbarMatrixHeadData2" span="1" hAlign="right" />
+            <MatrixRow id="itemsToolbarMatrixRow">
+              <MatrixCell id="itemsToolbarMatrixCell1"></MatrixCell>
+              <MatrixCell id="itemsToolbarMatrixCell2">
+                <HorizontalFlowLayout id="itemsRightActions">
+                  <Button id="searchItemsButton" tooltip="Search" iconSource="sap-icon://search" design="Transparent"/>
+                  <Button id="settingsItemsButton" tooltip="Settings" iconSource="sap-icon://action-settings" design="Transparent"/>
+                  <Button id="downloadItemsButton" tooltip="Download" iconSource="sap-icon://download" design="Transparent"/>
+                  <Button id="fullScreenItemsButton" tooltip="Full Screen" iconSource="sap-icon://full-screen" design="Transparent"/>
+                </HorizontalFlowLayout>
+              </MatrixCell>
+            </MatrixRow>
+          </MatrixLayout>
+        </HorizontalFlowLayout>
+
+        <Table id="salesOrderItemsTable" dataSource="{/SalesOrderItems}" width="100%" visibleRowCount="8">
+          <TablePersonalization id="itemsTablePersonalization" sortable="true" filterable="true"/>
+          <Toolbar id="tableToolbar">
+            <TextView id="tableCaption" text="Standard *"/>
+            <Button id="closeTableFilterButton" text="X" design="Transparent" tooltip="Close Filter"/>
+          </Toolbar>
+          <Columns>
+            <Column id="colActions">
+              <TextView id="colActionsHeader" text="Actions"/>
+              <HorizontalFlowLayout id="rowActions">
+                <Button id="deleteItemButton" iconSource="sap-icon://delete" tooltip="Delete Item" design="Transparent" onClick="onActionDeleteItem"/>
+                <Link id="detailsItemLink" text="Details" tooltip="View Item Details" onClick="onActionDetailsItem"/>
+              </HorizontalFlowLayout>
+            </Column>
+            <Column id="colItemPosition">
+              <TextView id="colItemPositionHeader" text="Sales Order Item P..."/>
+              <TextView id="itemPositionText" text="{ItemPosition}"/>
+            </Column>
+            <Column id="colTotalGrossAmount">
+              <TextView id="colTotalGrossAmountHeader" text="Total Gross Amount"/>
+              <TextView id="totalGrossAmountItemText" text="{GrossAmountValue}"/>
+            </Column>
+            <Column id="colTotalNetAmount">
+              <TextView id="colTotalNetAmountHeader" text="Total Net Amount"/>
+              <TextView id="totalNetAmountItemText" text="{NetAmountValue}"/>
+            </Column>
+            <Column id="colTotalTaxAmount">
+              <TextView id="colTotalTaxAmountHeader" text="Total Tax Amount"/>
+              <TextView id="totalTaxAmountItemText" text="{TaxAmountValue}"/>
+            </Column>
+            <Column id="colISOCurrencyCode">
+              <TextView id="colISOCurrencyCodeHeader" text="ISO Currency Code"/>
+              <TextView id="isoCurrencyCodeItemText" text="{ISOCurrencyCode}"/>
+            </Column>
+            <Column id="colItemATPStatus">
+              <TextView id="colItemATPStatusHeader" text="SO Item ATP Status"/>
+              <TextView id="itemATPStatusText" text="{ItemATPStatus}"/>
+            </Column>
+            <Column id="colProductID">
+              <TextView id="colProductIDHeader" text="Product ID"/>
+              <TextView id="productIDText" text="{ProductID}"/>
+            </Column>
+            <Column id="colProductName">
+              <TextView id="colProductNameHeader" text="Product Name"/>
+              <TextView id="productNameText" text="{ProductName}"/>
+            </Column>
+            <Column id="colProductDescription">
+              <TextView id="colProductDescriptionHeader" text="Product Description"/>
+              <TextView id="productDescriptionText" text="{ProductDescription}" wrapping="true" maxLines="1"/>
+            </Column>
+          </Columns>
+        </Table>
+      </Group>
+
+      <!-- Bottom Toolbar Section -->
+      <Toolbar id="footerToolbar" design="Footer">
+        <MessageArea id="messageArea" text="i 0" type="Information" visibleMessages="0" visible="true" />
+        <ToolbarSpacer id="footerSpacer"/>
+        <Button id="saveButton" text="Save" tooltip="Save Sales Order" design="Emphasized" onClick="onActionSave"/>
+        <Button id="cancelFooterButton" text="Cancel" tooltip="Cancel Changes" design="Transparent" onClick="onActionCancelFooter"/>
+      </Toolbar>
+    </VerticalFlowLayout>
+  </View>
+  <Controller name="SalesOrderOverviewController">
+    <Method name="onActionDelete" description="Handles the Delete action for the sales order." />
+    <Method name="onActionHeaderEdit" description="Handles the Edit action for the sales order header." />
+    <Method name="onActionCurrencyHelp" description="Opens help for currency selection." />
+    <Method name="onActionCancel" description="Cancels current sales order header modifications." />
+    <Method name="onActionConfirm" description="Confirms the sales order header." />
+    <Method name="onActionCreateItem" description="Creates a new sales order item." />
+    <Method name="onActionEditItems" description="Edits sales order items." />
+    <Method name="onActionSearchItems" description="Searches sales order items." />
+    <Method name="onActionSettingsItems" description="Opens settings for the sales order items table." />
+    <Method name="onActionDownloadItems" description="Downloads sales order items data." />
+    <Method name="onActionFullScreenItems" description="Enters full screen mode for sales order items table." />
+    <Method name="onActionDeleteItem" description="Deletes a specific sales order item." />
+    <Method name="onActionDetailsItem" description="Shows details for a specific sales order item." />
+    <Method name="onActionSave" description="Saves all changes to the sales order." />
+    <Method name="onActionCancelFooter" description="Cancels all changes and navigates back or refreshes." />
+    <Method name="onActionSettingsGlobal" description="Opens global settings." />
+    <Method name="onActionPersonalize" description="Opens personalization settings." />
+    <Method name="onActionAttachments" description="Manages attachments for the sales order." />
+    <Method name="onActionHelp" description="Opens help documentation." />
+  </Controller>
+</WebDynpro>
