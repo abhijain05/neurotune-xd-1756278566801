@@ -1,0 +1,10 @@
+[
+  {
+    "ProductID": "PROD-10001",
+    "ProductName": "Sample Product",
+    "Category": "Electronics",
+    "Price": 99.99,
+    "UnitsInStock": 25,
+    "Description": "Sample product description"
+  }
+]

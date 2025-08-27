@@ -1,0 +1,108 @@
+{
+  "SalesOrderHeader": {
+    "SalesOrderID": "500000032",
+    "LifecycleStatus": "New",
+    "ConfirmationStatus": "Initial",
+    "OrderingStatus": "Initial",
+    "BusinessPartnerID": "100000005",
+    "TotalGrossAmountValue": 5631.08,
+    "TotalGrossAmountCurrency": "EUR",
+    "TotalNetAmountValue": 4732,
+    "TotalNetAmountCurrency": "EUR",
+    "TotalTaxAmountValue": 899.08,
+    "TotalTaxAmountCurrency": "EUR",
+    "OpportunityID": "TECUM",
+    "CompanyNamePart1": "TECUM",
+    "CompanyNamePart2": "AG"
+  },
+  "SalesOrderItems": [
+    {
+      "ItemPosition": 10,
+      "GrossAmountValue": 2963.1,
+      "NetAmountValue": 2490,
+      "TaxAmountValue": 473.1,
+      "ISOCurrencyCode": "EUR",
+      "ItemATPStatus": "Initial",
+      "ProductID": "HT-1040",
+      "ProductName": "Laser Professional Eco",
+      "ProductDescription": "Print 2400 dpi image quality"
+    },
+    {
+      "ItemPosition": 20,
+      "GrossAmountValue": 583.1,
+      "NetAmountValue": 490,
+      "TaxAmountValue": 93.1,
+      "ISOCurrencyCode": "ARS",
+      "ItemATPStatus": "Initial",
+      "ProductID": "HT-1041",
+      "ProductName": "Laser Basic",
+      "ProductDescription": "Up to 22 ppm color or 24 ppm mono"
+    },
+    {
+      "ItemPosition": 30,
+      "GrossAmountValue": 830.62,
+      "NetAmountValue": 698,
+      "TaxAmountValue": 132.62,
+      "ISOCurrencyCode": "EUR",
+      "ItemATPStatus": "Initial",
+      "ProductID": "HT-1042",
+      "ProductName": "Laser Allround",
+      "ProductDescription": "Print up to 25 ppm letter or A4"
+    },
+    {
+      "ItemPosition": 40,
+      "GrossAmountValue": 330.82,
+      "NetAmountValue": 278,
+      "TaxAmountValue": 52.82,
+      "ISOCurrencyCode": "RUB",
+      "ItemATPStatus": "Initial",
+      "ProductID": "HT-1050",
+      "ProductName": "Ultra Jet Super Color",
+      "ProductDescription": "4800 dpi x 1200 dpi - up to 40 ppm"
+    },
+    {
+      "ItemPosition": 50,
+      "GrossAmountValue": 117.81,
+      "NetAmountValue": 99,
+      "TaxAmountValue": 18.81,
+      "ISOCurrencyCode": "USD",
+      "ItemATPStatus": "Initial",
+      "ProductID": "HT-1051",
+      "ProductName": "Ultra Jet Mobile",
+      "ProductDescription": "1000 dpi x 1000 dpi - up to 10 ppm"
+    },
+    {
+      "ItemPosition": 60,
+      "GrossAmountValue": 404.6,
+      "NetAmountValue": 340,
+      "TaxAmountValue": 64.6,
+      "ISOCurrencyCode": "EUR",
+      "ItemATPStatus": "Initial",
+      "ProductID": "HT-1052",
+      "ProductName": "Ultra Jet Super Highspeed",
+      "ProductDescription": "4800 dpi x 1200 dpi - up to 60 ppm"
+    },
+    {
+      "ItemPosition": 70,
+      "GrossAmountValue": 117.81,
+      "NetAmountValue": 99,
+      "TaxAmountValue": 18.81,
+      "ISOCurrencyCode": "EUR",
+      "ItemATPStatus": "Initial",
+      "ProductID": "HT-1055",
+      "ProductName": "Multi Print",
+      "ProductDescription": "1000 dpi x 1000 dpi - up to 15 ppm"
+    },
+    {
+      "ItemPosition": 80,
+      "GrossAmountValue": 28322,
+      "NetAmountValue": 23800,
+      "TaxAmountValue": 4522,
+      "ISOCurrencyCode": "JPY",
+      "ItemATPStatus": "Initial",
+      "ProductID": "HT-1056",
+      "ProductName": "Multi Color",
+      "ProductDescription": "1200 dpi x 1200 dpi - up to 20 ppm"
+    }
+  ]
+}

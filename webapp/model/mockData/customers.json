@@ -1,0 +1,13 @@
+[
+  {
+    "CustomerID": "CUST-10001",
+    "CompanyName": "Sample Company Ltd.",
+    "ContactName": "John Smith",
+    "City": "New York",
+    "PostalCode": "10001",
+    "Country": "US",
+    "Region": "NY",
+    "SearchTerm": "SAMPLE",
+    "Street": "123 Main Street"
+  }
+]

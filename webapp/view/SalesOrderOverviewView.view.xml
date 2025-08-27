@@ -1,17 +1,201 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <mvc:View xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m"
-  xmlns:layout="sap.ui.layout"
-  xmlns:form="sap.ui.layout.form"
-  xmlns:core="sap.ui.core"
-  xmlns:richtexteditor="sap.ui.richtexteditor"
-  xmlns:viz="sap.viz.ui5"
-  controllerName="preview.app.controller.SalesOrderOverviewView"
-  displayBlock="true">
-  <Page title="SalesOrderOverviewView" enableScrolling="true">
-    <content>
-      <Title id="title_hymxr00k" text="Overview: EPM Sales Order 500000032"/>
-      <Text id="rootLayout"/>
-    </content>
-  </Page>
+	xmlns="sap.m"
+	xmlns:layout="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	controllerName="converted.salesorderoverviewview.controller.SalesOrderOverviewView"
+	displayBlock="true"
+          xmlns:commons="sap.ui.commons">
+	<Page title="Sales Order Overview" enableScrolling="true">
+		<content>
+			<Title text="Overview: EPM Sales Order 500000032" />
+			<layout:VerticalLayout id="rootLayout">
+				<layout:HorizontalLayout id="headerToolbar">
+					<layout:MatrixLayout id="headerToolbarMatrix" rowCount="1" colCount="3" width="100%">
+						<layout:MatrixRow id="headerToolbarMatrixRow">
+							<layout:MatrixCell id="headerToolbarMatrixCell1">
+								<Button id="deleteButton" text="Delete" tooltip="Delete Sales Order" />
+							</layout:MatrixCell>
+							<layout:MatrixCell id="headerToolbarMatrixCell2" />
+							<layout:MatrixCell id="headerToolbarMatrixCell3">
+								<layout:HorizontalLayout id="headerRightActions">
+									<Button id="settingsButton" tooltip="Settings" icon="sap-icon://action-settings" type="Transparent" />
+									<Button id="personalizeButton" tooltip="Personalize" icon="sap-icon://key-user-settings" type="Transparent" />
+									<Button id="attachmentsButton" tooltip="Attachments" icon="sap-icon://attachment" type="Transparent" />
+									<Button id="helpButton" tooltip="Help" icon="sap-icon://sys-help" type="Transparent" />
+								</layout:HorizontalLayout>
+							</layout:MatrixCell>
+						</layout:MatrixRow>
+					</layout:MatrixLayout>
+				</layout:HorizontalLayout>
+
+
+				<Group id="salesOrderHeaderGroup" title="Sales Order Header" collapsible="true" expanded="true">
+					<layout:HorizontalLayout id="headerActions" hAlign="End">
+						<Link id="headerEditLink" text="Edit" tooltip="Edit Sales Order Header" />
+					</layout:HorizontalLayout>
+					<form:SimpleForm id="salesOrderHeaderForm" editable="false" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0">
+						<form:content>
+							<form:FormElement label="Sales Order ID:">
+								<Input id="soIdField" value="{orders>/SalesOrderHeader/SalesOrderID}" editable="false" />
+							</form:FormElement>
+							<form:FormElement label="SO Lifecycle Status:">
+								<Input id="soLifecycleStatusField" value="{orders>/SalesOrderHeader/LifecycleStatus}" editable="false" />
+							</form:FormElement>
+							<form:FormElement label="SO Confirmation Status:">
+								<Input id="soConfirmationStatusField" value="{orders>/SalesOrderHeader/ConfirmationStatus}" editable="false" />
+							</form:FormElement>
+							<form:FormElement label="SO Ordering Status:">
+								<Input id="soOrderingStatusField" value="{orders>/SalesOrderHeader/OrderingStatus}" editable="false" />
+							</form:FormElement>
+							<form:FormElement label="Business Partner ID:">
+								<Input id="bpIdField" value="{orders>/SalesOrderHeader/BusinessPartnerID}" editable="false" />
+							</form:FormElement>
+							<form:FormElement label="Total Gross Amount:">
+								<layout:HorizontalLayout>
+									<Input id="totalGrossAmountValueField" value="{orders>/SalesOrderHeader/TotalGrossAmountValue}" editable="false" width="8rem" textAlign="End" />
+									<Text id="totalGrossAmountCurrencyText" text="{orders>/SalesOrderHeader/TotalGrossAmountCurrency}" />
+									<Button id="currencyHelpButton" tooltip="Currency Help" icon="sap-icon://value-help" type="Transparent" />
+								</layout:HorizontalLayout>
+							</form:FormElement>
+							<form:FormElement label="Total Net Amount:">
+								<layout:HorizontalLayout>
+									<Input id="totalNetAmountValueField" value="{orders>/SalesOrderHeader/TotalNetAmountValue}" editable="false" width="8rem" textAlign="End" />
+									<Text id="totalNetAmountCurrencyText" text="{orders>/SalesOrderHeader/TotalNetAmountCurrency}" />
+								</layout:HorizontalLayout>
+							</form:FormElement>
+							<form:FormElement label="Total Tax Amount:">
+								<layout:HorizontalLayout>
+									<Input id="totalTaxAmountValueField" value="{orders>/SalesOrderHeader/TotalTaxAmountValue}" editable="false" width="8rem" textAlign="End" />
+									<Text id="totalTaxAmountCurrencyText" text="{orders>/SalesOrderHeader/TotalTaxAmountCurrency}" />
+								</layout:HorizontalLayout>
+							</form:FormElement>
+							<form:FormElement label="Opportunity ID:">
+								<Input id="opportunityIdField" value="{orders>/SalesOrderHeader/OpportunityID}" />
+							</form:FormElement>
+							<form:FormElement label="Company Name:">
+								<layout:HorizontalLayout>
+									<Text id="companyNameTecum" text="{orders>/SalesOrderHeader/CompanyNamePart1}" />
+									<Text id="companyNameAG" text="{orders>/SalesOrderHeader/CompanyNamePart2}" />
+								</layout:HorizontalLayout>
+							</form:FormElement>
+
+						</form:content>
+					</form:SimpleForm>
+					<layout:HorizontalLayout id="headerStatusLinks" hAlign="End">
+						<Link id="cancelLink" text="Cancel" tooltip="Cancel Sales Order" />
+						<Link id="confirmLink" text="Confirm" tooltip="Confirm Sales Order" />
+						<Text id="goodsIssueCreatedText" text="Goods Issue Created" enabled="false" />
+						<Text id="invoiceCreatedText" text="Invoice Created" enabled="false" />
+					</layout:HorizontalLayout>
+				</Group>
+
+				<Group id="salesOrderItemsGroup" title="Sales Order Items" collapsible="true" expanded="true">
+					<layout:HorizontalLayout id="itemsHeaderActions" hAlign="End">
+						<Link id="createItemLink" text="Create" icon="sap-icon://add" tooltip="Create New Item" />
+						<Link id="editItemsLink" text="Edit" tooltip="Edit Sales Order Items" />
+						<layout:MatrixLayout id="itemsToolbarMatrix" rowCount="1" colCount="2" width="100%">
+							<layout:MatrixRow id="itemsToolbarMatrixRow">
+								<layout:MatrixCell id="itemsToolbarMatrixCell1" />
+								<layout:MatrixCell id="itemsToolbarMatrixCell2">
+									<layout:HorizontalLayout id="itemsRightActions">
+										<Button id="searchItemsButton" tooltip="Search" icon="sap-icon://search" type="Transparent" />
+										<Button id="settingsItemsButton" tooltip="Settings" icon="sap-icon://action-settings" type="Transparent" />
+										<Button id="downloadItemsButton" tooltip="Download" icon="sap-icon://download" type="Transparent" press="onExportToExcel" />
+										<Button id="fullScreenItemsButton" tooltip="Full Screen" icon="sap-icon://full-screen" type="Transparent" />
+									</layout:HorizontalLayout>
+								</layout:MatrixCell>
+							</layout:MatrixRow>
+						</layout:MatrixLayout>
+					</layout:HorizontalLayout>
+					<Table id="salesOrderItemsTable" items="{orders>/SalesOrderItems}" width="100%"  >
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Standard *" />
+								<Button id="closeTableFilterButton" text="X" type="Transparent" tooltip="Close Filter" />
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<header>
+									<Text text="Actions" />
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Sales Order Item P..." />
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Total Gross Amount" />
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Total Net Amount" />
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Total Tax Amount" />
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="ISO Currency Code" />
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="SO Item ATP Status" />
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Product ID" />
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Product Name" />
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Product Description" />
+								</header>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<layout:HorizontalLayout>
+										<Button icon="sap-icon://delete" tooltip="Delete Item" type="Transparent" />
+										<Link text="Details" tooltip="View Item Details" />
+									</layout:HorizontalLayout>
+									<Text text="{ItemPosition}" />
+									<Text text="{GrossAmountValue}" />
+									<Text text="{NetAmountValue}" />
+									<Text text="{TaxAmountValue}" />
+									<Text text="{ISOCurrencyCode}" />
+									<Text text="{ItemATPStatus}" />
+									<Text text="{ProductID}" />
+									<Text text="{ProductName}" />
+									<Text text="{ProductDescription}" wrapping="true" maxLines="1" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</Group>
+
+				<Toolbar id="footerToolbar" design="Footer">
+					<MessageArea id="messageArea" visibleMessages="0" />
+					<ToolbarSpacer />
+					<Button id="saveButton" text="Save" tooltip="Save Sales Order" />
+					<Button id="cancelFooterButton" text="Cancel" tooltip="Cancel Changes" type="Transparent" />
+				</Toolbar>
+			</layout:VerticalLayout>
+		</content>
+	</Page>
 </mvc:View>
